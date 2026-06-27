@@ -2,20 +2,25 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 var isatcking = false
+@onready var hitbox: Area2D = $hitbox
+
+
+
 const  maxhlt = 100
 const speed = 60
 const atkrate = 1
-const atkdmg = 10
-var atkrange = 20
+const atkdmg = 25
+var atkrange = 10
 var ishurt = false
 
 var hlt= maxhlt
 var isdead = false
 
-var atktimer = 0.0
+var atktimer = 0.1
 var player :CharacterBody2D = null
 var direc := "right"
 
+signal died
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -23,7 +28,6 @@ func _ready() -> void:
 	
 	
 	
-@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if isdead or player ==null:
 		return
@@ -66,7 +70,6 @@ func atck(delta) -> void:
 	
 	atktimer -= delta
 	if atktimer <= 0.0:
-		atktimer=atkrate
 		doingattack()
 		
 		
@@ -75,15 +78,15 @@ func atck(delta) -> void:
 		
 func doingattack()->void:
 	
-	if isdead or isatcking:
+	if isdead or isatcking :
 		return
 		
 	isatcking = true
 	
 	animated_sprite_2d.play("attack" + direc)
 	await animated_sprite_2d.animation_finished
-	if player and global_position.distance_to(player.global_position)<= atkrange:
-		
+	
+	if player and global_position.distance_to(player.global_position) <= atkrange:
 		player.damage(atkdmg)
 		isatcking = false
 		
@@ -116,6 +119,7 @@ func damage(amt,knockback)-> void :
 	
 func die()-> void:
 	isdead= true
+	emit_signal("died")
 	velocity= Vector2.ZERO
 	set_physics_process(false
 	)
@@ -123,3 +127,7 @@ func die()-> void:
 	)
 	await animated_sprite_2d.animation_finished
 	queue_free()	
+
+
+
+	

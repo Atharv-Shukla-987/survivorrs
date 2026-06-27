@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="survivorrs"
-run/main_scene="uid://enxe4vhixf0l"
+run/main_scene="uid://di4yacf0s8ukf"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
+
+[autoload]
+
+GlobalAudioStreamPlayer="*uid://bxtt170nbdkwk"
 
 [editor_plugins]
 

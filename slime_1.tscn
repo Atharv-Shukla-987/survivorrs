@@ -1062,7 +1062,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_461kv"]
-radius = 7.071068
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhjab"]
+radius = 9.486833
 
 [node name="slime1" type="CharacterBody2D" unique_id=878272257 groups=["enemy"]]
 collision_layer = 2
@@ -1074,3 +1077,10 @@ animation = &"hurtdown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=850571256]
 shape = SubResource("CircleShape2D_461kv")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1807292333 groups=["enemy"]]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=453909132]
+shape = SubResource("CircleShape2D_yhjab")
