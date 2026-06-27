@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const maxhlt = 100
+const maxhlt = 1
 const firingrate = 1  
 @onready var pivit: Node2D = $pivit
 
@@ -9,7 +9,7 @@ const firingrate = 1
 
 @export var bulletscene : PackedScene
 
-var speed=100
+var speed=150 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var isattacking: bool = false
 var ishurt :bool = false
@@ -54,7 +54,7 @@ func animation(direc:Vector2) -> void :
 func gunaim()-> void:
 	var mouseposition = get_global_mouse_position()
 	pivit.look_at(mouseposition)
-	pivit.rotation_degrees -= 90
+	
 	if cos(pivit.rotation) > 0 :
 		gun.flip_v = true
 	else :
@@ -74,15 +74,16 @@ func flip(direc : Vector2)-> void:
 	
 		
 func damage(amt) -> void:
+	print("yes")
 	if ishurt == true :
 		return
 		
-	hlt = hlt - amt
+	hlt -= amt
 	if hlt <= 0 :
-		pass
+		dead()
 		
 	animated_sprite_2d.play("damage")
-	
+	await animated_sprite_2d.animation_finished
 	
 	
 func dead()-> void:

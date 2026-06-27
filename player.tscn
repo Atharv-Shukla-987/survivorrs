@@ -118,8 +118,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
-radius = 7.28011
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(23, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
 atlas = ExtResource("1_4flbx")
@@ -137,6 +137,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=178775762 groups=["player"]]
+collision_mask = 2
 script = ExtResource("1_onrkg")
 bulletscene = ExtResource("2_i3pqv")
 
@@ -145,15 +146,14 @@ sprite_frames = SubResource("SpriteFrames_n7ghd")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800449227]
-position = Vector2(1, 12)
-shape = SubResource("CircleShape2D_i3pqv")
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="pivit" type="Node2D" parent="." unique_id=1427833127]
 
 [node name="gun" type="AnimatedSprite2D" parent="pivit" unique_id=730861363]
-position = Vector2(3.0000002, 19)
-rotation = 1.5707964
-scale = Vector2(0.52097607, 0.8678756)
+position = Vector2(13, 5)
+scale = Vector2(0.51855254, 0.8884832)
 sprite_frames = SubResource("SpriteFrames_bwjto")
 autoplay = "default"
 frame_progress = 0.55177003

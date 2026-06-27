@@ -862,7 +862,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qur2m")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurtdown",
 "speed": 5.0
 }, {
@@ -882,7 +882,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fvnto")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurtleft",
 "speed": 5.0
 }, {
@@ -902,7 +902,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ikdkt")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurtright",
 "speed": 5.0
 }, {
@@ -922,7 +922,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_isrva")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurtup",
 "speed": 5.0
 }, {
@@ -1061,16 +1061,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5r7av"]
-radius = 8.246211
+[sub_resource type="CircleShape2D" id="CircleShape2D_461kv"]
+radius = 7.071068
 
-[node name="slime1" type="CharacterBody2D" unique_id=878272257]
+[node name="slime1" type="CharacterBody2D" unique_id=878272257 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_461kv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2074061555]
 sprite_frames = SubResource("SpriteFrames_d2h5g")
-animation = &"deadup"
+animation = &"hurtdown"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460304294]
-shape = SubResource("CircleShape2D_5r7av")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=850571256]
+shape = SubResource("CircleShape2D_461kv")

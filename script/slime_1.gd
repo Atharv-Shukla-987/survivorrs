@@ -1,12 +1,12 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-
+var isatcking = false
 const  maxhlt = 100
-const speed = 100
+const speed = 60
 const atkrate = 1
 const atkdmg = 10
-var atkrange = 5
+var atkrange = 20
 var ishurt = false
 
 var hlt= maxhlt
@@ -74,29 +74,42 @@ func atck(delta) -> void:
 		
 		
 func doingattack()->void:
-	if isdead or ishurt :
+	
+	if isdead or isatcking:
 		return
+		
+	isatcking = true
+	
 	animated_sprite_2d.play("attack" + direc)
 	await animated_sprite_2d.animation_finished
 	if player and global_position.distance_to(player.global_position)<= atkrange:
+		
 		player.damage(atkdmg)
+		isatcking = false
+		
 		
 		
 
-func damage(amt)-> void :
+func damage(amt,knockback)-> void :
 	if isdead or ishurt :
 		return
 	
-	hlt = hlt -amt
+	hlt -=amt
 	hlt = clamp(hlt,0,maxhlt)
 	
 	if hlt <= 0 :
 		die()
 		return
 		
+		
+		
+	ishurt = true
+	velocity= knockback * 200
 	animated_sprite_2d.play(
 		"hurt" + direc
 	)
+	
+	
 	await animated_sprite_2d.animation_finished
 	ishurt = false
 	
