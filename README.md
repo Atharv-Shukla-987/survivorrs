@@ -17,7 +17,8 @@ I have chosen endless theme because of this games core mechanies which is u have
  3. Slimes that attack player with attack, hurt , knockback,dying animation
  4. A wave spawner that spawn waves of slime with number of slimes being ( wave number * 5 ) and some delay between ending of starting of another wave
  5. A wave indicator
- 6. A background sound 
+ 6. A background sound
+ 7. A basic looking tilemap
 
 
 ## Future plans
@@ -29,7 +30,12 @@ I have chosen endless theme because of this games core mechanies which is u have
 6.  A cool Ui with health bar
 7.  A expreience bar
 8.  BOOn system that gives u boons with each experience lvl reached 
+9. Randomly generated room systems
+    
 
+
+## images
+<img width="654" height="368" alt="image" src="https://github.com/user-attachments/assets/ac043df0-acec-4b8a-90f0-f9131da95ebf" />
 
 
 # tech used
